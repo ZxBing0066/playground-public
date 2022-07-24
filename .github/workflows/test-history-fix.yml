@@ -1,13 +1,13 @@
-name: test-history
+name: test-history-fix
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-  build:
+  log:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
