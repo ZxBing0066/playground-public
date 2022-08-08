@@ -1,0 +1,9 @@
+{
+    "$schema": "./my-schema.json",
+    "name": "test",
+    "age": "20",
+    "fullName": {
+        "lastName": "Doe",
+        "middleName": "Smith"
+    }
+}
