@@ -1,0 +1,94 @@
+:root {
+    /* Generate by https://chinese-colors.heyfe.org/ */
+    /* Brand color: #f2481b, colorAsTextColor: true, type: mix */
+    --color-text: rgba(242, 72, 27, 0.85);
+    --color-text-active: #f2481b;
+    --color-text-primary: #f2481b;
+    --color-text-secondary: rgba(242, 72, 27, 0.7);
+    --color-background: rgb(255, 255, 255);
+    --color-background-active: #ffffff;
+    --color-border: rgba(242, 74, 30, 0.85);
+    --color-border-active: rgb(242, 74, 30);
+    --color-shadow: rgba(242, 74, 30, 0.75);
+}
+
+body {
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+ul {
+    border: 1px solid var(--color-border);
+    border-width: 1px 1px 0 1px;
+    width: 300px;
+    margin: 2em auto;
+}
+
+li {
+    overflow: hidden;
+    display: flex;
+    line-height: 1;
+    padding: 8px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0;
+}
+li > * {
+    font-size: 16px;
+}
+
+.highlight {
+    background-color: var(--color-text);
+    color: var(--color-background);
+}
+
+.simple .prefix,
+.simple .suffix,
+.simple .highlight {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+}
+.simple .prefix {
+    direction: rtl;
+    flex-shrink: 1.2;
+}
+.simple .highlight {
+    max-width: calc(100% - 3em);
+    flex-shrink: 0;
+    direction: rtl;
+}
+
+.split-highlight .prefix,
+.split-highlight .suffix {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 1;
+}
+
+.split-highlight .prefix {
+    direction: rtl;
+}
+
+.split-highlight .highlight {
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 100%;
+    display: flex;
+}
+
+.split-highlight .highlight .prefix,
+.split-highlight .highlight .suffix {
+}
