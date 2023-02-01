@@ -1,0 +1,36 @@
+{
+    "name": "threejs-rabbit",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+        "start": "parcel index.html --open",
+        "build": "parcel build index.html"
+    },
+    "dependencies": {
+        "@types/three": "^0.148.1",
+        "three": "latest"
+    },
+    "devDependencies": {
+        "@babel/core": "^7",
+        "parcel": "^2.0.0"
+    },
+    "keywords": [
+        "javascript",
+        "threejs"
+    ],
+    "staticFiles": {
+        "staticPath": [
+            {
+                "staticPath": "assets",
+                "staticOutDir": "assets"
+            }
+        ]
+    },
+    "targets": {
+        "default": {
+            "publicUrl": "/three-js-rabbit-0/",
+            "distDir": "../websites/three-js-rabbit-0/"
+        }
+    }
+}
