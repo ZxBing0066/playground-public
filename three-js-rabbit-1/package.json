@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "start": "parcel index.html --open",
-        "build": "parcel build index.html"
+        "build": "rm -rf ../websites/three-js-rabbit-1/ && parcel build index.html --no-source-maps"
     },
     "dependencies": {
         "@types/three": "^0.148.1",

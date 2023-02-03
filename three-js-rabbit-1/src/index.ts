@@ -15,22 +15,41 @@ let app = {
     controls: null
 };
 
-let idleAction, walkAction, mixer;
+let idleAction, walkAction, mixer, model;
+
+const controller = {
+    idle: () => {
+        idleAction.play();
+        walkAction.stop();
+    },
+    walk: () => {
+        walkAction.play();
+        idleAction.stop();
+    },
+    scale: 0.4,
+    rotateY: Math.PI / 2
+};
 
 const createPanel = () => {
     const panel = new GUI({ width: 310 });
-    const controller = {
-        idle: () => {
-            idleAction.play();
-            walkAction.stop();
-        },
-        walk: () => {
-            walkAction.play();
-            idleAction.stop();
-        }
-    };
+    panel.add(document, 'title');
     panel.add(controller, 'idle');
     panel.add(controller, 'walk');
+    panel.add(controller, 'scale', 0.1, 2, 0.01).onChange(value => {
+        model.scale.set(value, value, value);
+    });
+    panel.add(controller, 'rotateY', -Math.PI, Math.PI, 0.1).onChange(value => {
+        model.rotation.set(0, value, 0);
+    });
+    const colorFormats = {
+        string: '#000000',
+        int: 0x000000,
+        object: { r: 1, g: 1, b: 1 },
+        array: [1, 1, 1]
+    };
+    panel.addColor(colorFormats, 'string').onChange(value => {
+        app.scene.background = new THREE.Color(value);
+    });
 };
 
 const init = () => {
@@ -51,13 +70,13 @@ const init = () => {
     loader.load(
         new URL('/assets/rabbit.glb', import.meta.url) + '',
         function (gltf) {
-            gltf.scene.rotateY(Math.PI / 2);
-            // gltf.scene.scale.set(0.4, 0.4, 0.4);
-            app.scene.add(gltf.scene);
+            window.model = model = gltf.scene;
+            model.rotateY(Math.PI / 2);
+            model.scale.set(controller.scale, controller.scale, controller.scale);
+            app.scene.add(model);
 
             const animations = gltf.animations;
-            console.log(animations);
-            mixer = new THREE.AnimationMixer(gltf.scene);
+            mixer = new THREE.AnimationMixer(model);
 
             [idleAction, walkAction] = [mixer.clipAction(animations[0]), mixer.clipAction(animations[1])];
             walkAction.play();
