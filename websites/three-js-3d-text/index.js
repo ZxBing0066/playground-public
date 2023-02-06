@@ -10,7 +10,7 @@ let container;
 
 let camera, cameraTarget, scene, renderer, controls;
 
-let group, textMesh1, textMesh2, textGeo, materials, font;
+let group, textMesh1, textGeo, materials, font;
 
 const height = 20,
     size = 70,
@@ -18,8 +18,6 @@ const height = 20,
     curveSegments = 4,
     bevelThickness = 2,
     bevelSize = 1.5;
-
-// const mirror = true;
 
 const fontMap = {
     helvetiker: 0,
@@ -52,8 +50,6 @@ function init() {
     cameraTarget = new THREE.Vector3(0, 150, 0);
 
     scene = new THREE.Scene();
-    // scene.background = new THREE.Color(0x000000);
-    // scene.fog = new THREE.Fog(0x000000, 250, 1400);
 
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.125);
     dirLight.position.set(0, 0, 1).normalize();
@@ -77,14 +73,6 @@ function init() {
     scene.add(group);
 
     loadFont();
-
-    // const plane = new THREE.Mesh(
-    //     new THREE.PlaneGeometry(10000, 10000),
-    //     new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.5, transparent: true })
-    // );
-    // plane.position.y = 100;
-    // plane.rotation.x = -Math.PI / 2;
-    // scene.add(plane);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -129,24 +117,10 @@ function createText() {
     textMesh1.rotation.y = Math.PI * 2;
 
     group.add(textMesh1);
-
-    // if (mirror) {
-    //     textMesh2 = new THREE.Mesh(textGeo, materials);
-
-    //     textMesh2.position.x = centerOffset;
-    //     textMesh2.position.y = -hover;
-    //     textMesh2.position.z = height;
-
-    //     textMesh2.rotation.x = Math.PI;
-    //     textMesh2.rotation.y = Math.PI * 2;
-
-    //     group.add(textMesh2);
-    // }
 }
 
 function refreshText() {
     group.remove(textMesh1);
-    // if (mirror) group.remove(textMesh2);
 
     createText();
 }
