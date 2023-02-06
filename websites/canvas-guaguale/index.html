@@ -9,16 +9,26 @@
 </head>
 
 <body>
-    <div id="text"></div>
-    <canvas id="canvas"></canvas>
+    <div id="container">
+        <div id="text"></div>
+        <canvas id="canvas"></canvas>
+    </div>
     <script src="./index.js"></script>
     <style>
-        #text, #canvas {
+        #container,
+        #text,
+        #canvas {
             position: absolute;
             width: 300px;
             height: 150px;
             user-select: none;
         }
+
+        #container {
+            position: relative;
+            margin: 0 auto;
+        }
+
         #text {
             text-align: center;
             font-size: 30px;
@@ -29,7 +39,6 @@
             letter-spacing: 1em;
             text-indent: 1em;
             color: rgb(246, 169, 3);
-            /* background-color: #eeeeee; */
         }
     </style>
 </body>

@@ -32,10 +32,9 @@ const map = new Map();
 canvas.addEventListener('mousemove', e => {
     if (!brushing) return;
 
-    let x = e.x - canvas.offsetLeft;
-    let y = e.y - canvas.offsetTop;
-
     ctx.beginPath();
+    const x = e.offsetX,
+        y = e.offsetY;
     ctx.arc(x, y, 20, 0, 2 * Math.PI);
     ctx.globalCompositeOperation = 'destination-out';
     ctx.fill();
