@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Rabbit</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+        <div class="face">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+            <div class="mouse"></div>
+        </div>
+    </div>
+    <style>
+        @keyframes eye-animate {
+
+            0%,
+            end {
+                bottom: 8px;
+                right: 8px;
+            }
+
+            33% {
+                bottom: 3px;
+                right: 5px;
+            }
+
+            66% {
+                bottom: 3px;
+                right: 12px;
+            }
+        }
+
+        @keyframes left-ear-animate {
+
+            0%,
+            end {
+                transform: rotate(-15deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        @keyframes right-ear-animate {
+
+            0%,
+            end {
+                transform: rotate(15deg);
+            }
+
+            50% {
+                transform: rotate(-5deg);
+            }
+        }
+    </style>
+    <style>
+        #wrap {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            position: relative;
+            background-color: #b2d8ce;
+        }
+
+        .ear,
+        .face,
+        .eye,
+        .nose,
+        .mouse {
+            position: absolute;
+        }
+
+        .ear {
+            background-color: white;
+            height: 130px;
+            width: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 100px;
+            transform: rotate(-10deg);
+            transform-origin: bottom;
+            animation: left-ear-animate 4s infinite;
+        }
+
+        .ear.right {
+            left: unset;
+            right: 100px;
+            transform: rotate(10deg);
+            animation: right-ear-animate 4s infinite;
+        }
+
+        .ear::after {
+            content: '';
+            background-color: #ffccd5;
+            width: 80%;
+            height: 80%;
+            border-radius: inherit;
+        }
+
+        .face {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            top: 100px;
+            background: #fff;
+            left: 75px;
+        }
+
+        .eye {
+            background-color: black;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            left: 35px;
+            top: 40px;
+        }
+
+        .eye.right {
+            left: unset;
+            right: 35px;
+        }
+
+        .eye::after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            position: absolute;
+            bottom: 9px;
+            right: 9px;
+            border-radius: 50%;
+            background-color: white;
+            animation: eye-animate 2s infinite;
+        }
+
+        .nose {
+            width: 15px;
+            height: 15px;
+            left: 68px;
+            background-color: rgb(93, 51, 51);
+            border-radius: 50%;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .mouse {
+            background-color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            top: 95px;
+            left: 55px;
+        }
+
+        .mouse::after {
+            content: '';
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: block;
+            top: -6px;
+            position: absolute;
+        }
+    </style>
+</body>
+
+</html>
