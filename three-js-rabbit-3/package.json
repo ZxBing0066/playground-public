@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "start": "parcel index.html --open",
-        "build": "rm -rf ../websites/three-js-rabbit-1/ && parcel build index.html --no-source-maps"
+        "build": "rm -rf ../websites/three-js-rabbit-3/ && parcel build index.html --no-source-maps"
     },
     "dependencies": {
         "@types/three": "^0.148.1",
@@ -29,8 +29,8 @@
     },
     "targets": {
         "default": {
-            "publicUrl": "/three-js-rabbit-2/",
-            "distDir": "../websites/three-js-rabbit-2/"
+            "publicUrl": "/three-js-rabbit-3/",
+            "distDir": "../websites/three-js-rabbit-3/"
         }
     }
 }
