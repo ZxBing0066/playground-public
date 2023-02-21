@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class="flip-container">
+            <div class="flip">
+                <div class="frontend"></div>
+                <div class="backend"></div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .flip-container {
+            width: 200px;
+            height: 300px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            margin: 3em auto;
+            perspective: 1000px;
+            -webkit-perspective: 1000;
+        }
+
+        .frontend {
+            background-color: yellow;
+        }
+
+        .backend {
+            background-color: red;
+        }
+
+        .flip-container:hover .flip {
+            transform: rotateY(180deg);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .flip {
+            transform-style: preserve-3d;
+            transition: 3s;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            position: relative;
+        }
+
+        .frontend,
+        .backend {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 5px;
+            /* transform: translateZ(50px); */
+        }
+
+        .backend {
+            transform: rotateY(180deg);
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        @keyframes animateGlow {
+
+            0%,
+            to {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 200% 50%;
+            }
+        }
+
+        body {
+            background-size: 300% 300%;
+            background-image: linear-gradient(-45deg,
+                    #ff5770,
+                    #9e16c3,
+                    #6501de,
+                    #ff5770);
+            animation: animateGlow 20s linear infinite;
+        }
+    </style>
+</body>
+
+</html>
