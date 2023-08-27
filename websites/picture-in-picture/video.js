@@ -1,5 +1,35 @@
 const button = document.getElementById('toggle-button');
+const disableButton = document.getElementById('toggle-disable-button');
+const autoButton = document.getElementById('toggle-auto');
 const video = document.getElementById('video');
+
+const state = {
+    _disable: false,
+    get disable() {
+        return this._disable;
+    },
+    set disable(state) {
+        this._disable = state;
+        disableButton.innerText = state ? 'disablePictureInPicture is true' : 'disablePictureInPicture is false';
+        video.disablePictureInPicture = state;
+    },
+    _auto: false,
+    get auto() {
+        return this._auto;
+    },
+    set auto(state) {
+        this._auto = state;
+        autoButton.innerText = state ? 'auto toggle PIP on scroll: on' : 'auto toggle PIP on scroll: off';
+    }
+};
+
+(function init() {
+    state.disable = false;
+    state.auto = false;
+})();
+
+disableButton.onclick = () => (state.disable = !state.disable);
+autoButton.onclick = () => (state.auto = !state.auto);
 
 function onEnterPip(e) {
     console.log('Picture-in-Picture mode activated!', e);
@@ -29,9 +59,8 @@ function togglePictureInPicture() {
 }
 
 function onIntersection(entries) {
-    console.log(entries);
     entries.forEach(entry => {
-        if (entry.target === video) {
+        if (entry.target === video && state.auto) {
             if (entry.intersectionRatio < 0.5) {
                 if (!document.pictureInPictureElement) {
                     togglePictureInPicture();
